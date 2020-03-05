@@ -20,23 +20,26 @@ class BST{
         if(root == NULL){
             return new Node(data);
         }
-        else if(root->data >= data){
+        else if(root->data > data){
             root->left = insert(root->left,data);
         }
-        else if(root->data <= data){
+        else if(root->data < data){
             root->right = insert(root->right,data);
         }
         return root;
     }
-    void haveChild(Node *node){
-        if(!(node->right == NULL) && !(node->left == NULL)){
-            return;
-        }
-        haveChild(node->left);
-        cout << node->data << endl;
-        haveChild(node->right);
-
+    
+    
+    void hasChild(Node *node){
+    if (node == NULL) {
+        return;
     }
+    hasChild(node->left); 
+    if((node->left == NULL) && (node->right == NULL)){
+        cout << node->data << endl;
+    }
+    hasChild(node->right);
+}
 };
 int main(){
     BST *bst = new BST();
@@ -49,5 +52,5 @@ int main(){
         bst->root = bst->insert(bst->root, val);
         }
     }
-    bst->haveChild(bst->root);
+    bst->hasChild(bst->root);
 }
