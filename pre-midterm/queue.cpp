@@ -7,9 +7,9 @@ class Node{
         Node *next;
     Node(int data){
         this->data = data;
-        next = NULL;
     }
 };
+
 class Queue{
     public:
         Node *tail, *front;
@@ -48,12 +48,12 @@ class Queue{
         cout << _size << endl;
     }
     void clear(){
-        if(front != NULL){
+        // if(front != NULL){
             front = NULL;
             tail = NULL;
             _size = 0;
             cout << "ok" << endl;
-        }
+        //}
     }
 
 };

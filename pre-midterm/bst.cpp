@@ -14,7 +14,7 @@ class BST{
     public:
         Node *root;
     BST(){
-        root = NULL;
+        this->root = NULL;
     }
     Node* insert(Node* root,int data){
         if(root == NULL){
@@ -44,7 +44,6 @@ class BST{
     }
     void print(Node* node){
          if(node == NULL)
-
             return;
 
         print(node->left);

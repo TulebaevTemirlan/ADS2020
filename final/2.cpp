@@ -1,8 +1,7 @@
-//stack realization
 #include <iostream>
 #include <string>
-
 using namespace std;
+
 class Node{
     public:
         int data;
@@ -14,8 +13,13 @@ class Node{
 };
 class Stack{
     public:
-    Node *top;
-    int _size = 0;
+        int sz;
+        Node *top;
+    Stack(){
+        sz = 0;
+        top = NULL;
+    }
+
     void push(int data){
         Node *node = new Node(data);
         if(top == NULL){
@@ -25,56 +29,65 @@ class Stack{
             node->next = top;
             top = node;
         }
-        _size++;
+        sz++;
         cout << "ok" << endl;
     }
     void pop(){
+        if(top == NULL){
+            cout << "error" << endl;
+        }
         if(top != NULL){
             cout << top->data << endl;
             top = top->next;
-            _size--;
+            sz--;
         }
     }
     void back(){
-        cout << top->data << endl;
+        if(top == NULL){
+            cout << "error" << endl;
+        }
+        if(top != NULL){
+            cout << top->data << endl;
+        }
     }
     void size(){
-        cout << _size << endl;
+        cout << sz << endl;
     }
     void clear(){
         if(top != NULL){
-            while( _size != 0){
+            while(sz != 0){
                 top = top->next;
-                _size--;
+                sz--;
             }
         }
         cout << "ok" << endl;
     }
 };
 int main(){
-    Stack myStack;
     string command;
+    Stack mystack;
     int x;
     while(cin >> command){
         if(command == "push"){
             cin >> x;
-            myStack.push(x);
+            mystack.push(x);
+        }
+        else if(command == "pop"){
+            mystack.pop();
+        }
+        else if(command == "back"){
+            mystack.back();
         }
         else if(command == "size"){
-            myStack.size();
+            mystack.size();
         }
-        else if(command=="pop"){
-            myStack.pop();
+        else if(command == "clear"){
+            mystack.clear();
         }
-        else if(command=="back"){
-            myStack.back();
-        }
-        else if(command =="clear"){
-            myStack.clear();
-        }
-        else if(command=="exit"){
-            cout << "bye"<<endl;
+        else if(command == "exit"){
+            cout << "bye";
             break;
         }
     }
+    return 0;
 }
